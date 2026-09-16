@@ -38,9 +38,22 @@ export default function RegisterPage() {
       await register({ username, email, password });
       showToast('success', 'Account created! Please sign in.');
       router.push('/login');
-    } catch (err: unknown) {
-      const error = err as { response?: { data?: { message?: string } } };
-      setError(error.response?.data?.message || 'Registration failed. Please try again.');
+    } catch (err: any) {
+      const errorData = err.response?.data;
+      if (errorData) {
+        if (errorData.message) {
+          setError(errorData.message);
+        } else if (typeof errorData === 'object') {
+          // DRF returns errors as { field_name: ["error string"] }
+          const firstErrorKey = Object.keys(errorData)[0];
+          const firstError = errorData[firstErrorKey];
+          setError(`${firstErrorKey}: ${Array.isArray(firstError) ? firstError[0] : firstError}`);
+        } else {
+          setError('Registration failed. Please try again.');
+        }
+      } else {
+        setError('Registration failed. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
