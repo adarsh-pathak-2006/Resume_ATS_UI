@@ -145,13 +145,34 @@ export default function AnalysisDetailPage() {
           {/* Content */}
           {activeTab === 'resume' && analysis.generated_resume && (
             <>
-              <MarkdownRenderer content={analysis.generated_resume} />
+              <div id="pdf-resume-content" style={{ padding: '20px', background: 'var(--bg-glass)', borderRadius: 'var(--radius-lg)' }}>
+                <MarkdownRenderer content={analysis.generated_resume} />
+              </div>
               <div className="content-actions">
                 <button
                   className="btn btn-primary"
                   onClick={() => handleCopy(analysis.generated_resume!, 'Resume')}
                 >
                   📋 Copy Resume
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={async () => {
+                    const element = document.getElementById('pdf-resume-content');
+                    if (element) {
+                      // @ts-ignore
+                      const html2pdf = (await import('html2pdf.js')).default;
+                      html2pdf().set({
+                        margin: 15,
+                        filename: 'optimized-resume.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2 },
+                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                      }).from(element).save();
+                    }
+                  }}
+                >
+                  📄 Download PDF
                 </button>
                 <button
                   className="btn btn-secondary"
@@ -173,13 +194,34 @@ export default function AnalysisDetailPage() {
 
           {activeTab === 'cover_letter' && analysis.cover_letter && (
             <>
-              <MarkdownRenderer content={analysis.cover_letter} />
+              <div id="pdf-cover-letter-content" style={{ padding: '20px', background: 'var(--bg-glass)', borderRadius: 'var(--radius-lg)' }}>
+                <MarkdownRenderer content={analysis.cover_letter} />
+              </div>
               <div className="content-actions">
                 <button
                   className="btn btn-primary"
                   onClick={() => handleCopy(analysis.cover_letter!, 'Cover Letter')}
                 >
                   📋 Copy Cover Letter
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={async () => {
+                    const element = document.getElementById('pdf-cover-letter-content');
+                    if (element) {
+                      // @ts-ignore
+                      const html2pdf = (await import('html2pdf.js')).default;
+                      html2pdf().set({
+                        margin: 15,
+                        filename: 'cover-letter.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2 },
+                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                      }).from(element).save();
+                    }
+                  }}
+                >
+                  📄 Download PDF
                 </button>
                 <button
                   className="btn btn-secondary"
