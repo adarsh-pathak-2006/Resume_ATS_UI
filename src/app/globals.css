@@ -1230,6 +1230,79 @@ a:hover {
   font-weight: 600;
 }
 
+/* ---- Professional Document Preview (for Resumes and Cover Letters) ---- */
+.document-preview {
+  background: #ffffff !important;
+  color: #000000 !important;
+  padding: 40px !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.document-preview .content-body {
+  color: #333333;
+  line-height: 1.6;
+  font-size: 11pt;
+}
+
+.document-preview .content-body h1,
+.document-preview .content-body h2,
+.document-preview .content-body h3 {
+  color: #000000;
+  margin: 16px 0 8px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.document-preview .content-body h1 {
+  font-size: 18pt;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 8px;
+}
+
+.document-preview .content-body h2 {
+  font-size: 14pt;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 4px;
+  margin-top: 24px;
+}
+
+.document-preview .content-body h3 {
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.document-preview .content-body p {
+  margin-bottom: 12px;
+}
+
+.document-preview .content-body ul,
+.document-preview .content-body ol {
+  margin-top: 4px;
+  margin-bottom: 12px;
+  padding-left: 20px;
+}
+
+.document-preview .content-body li {
+  margin-bottom: 4px;
+}
+
+.document-preview .content-body strong {
+  color: #000000;
+  font-weight: bold;
+}
+
+.document-preview hr {
+  border: none !important;
+  border-top: 1px solid #cccccc !important;
+  margin: 16px 0 !important;
+}
+
 .content-actions {
   display: flex;
   gap: 12px;

@@ -145,7 +145,7 @@ export default function AnalysisDetailPage() {
           {/* Content */}
           {activeTab === 'resume' && analysis.generated_resume && (
             <>
-              <div id="pdf-resume-content" style={{ padding: '20px', background: 'var(--bg-glass)', borderRadius: 'var(--radius-lg)' }}>
+              <div id="pdf-resume-content" className="document-preview" style={{ marginBottom: '24px' }}>
                 <MarkdownRenderer content={analysis.generated_resume} />
               </div>
               <div className="content-actions">
@@ -194,7 +194,7 @@ export default function AnalysisDetailPage() {
 
           {activeTab === 'cover_letter' && analysis.cover_letter && (
             <>
-              <div id="pdf-cover-letter-content" style={{ padding: '20px', background: 'var(--bg-glass)', borderRadius: 'var(--radius-lg)' }}>
+              <div id="pdf-cover-letter-content" className="document-preview" style={{ marginBottom: '24px' }}>
                 <MarkdownRenderer content={analysis.cover_letter} />
               </div>
               <div className="content-actions">
